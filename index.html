@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>The Walker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link href="css/codiqa.ext.min.css" rel="stylesheet">
+  <link href="css/jqm-neue.css" rel="stylesheet">
+  
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.mobile.min.js"></script>
+  <script src="js/codiqa.ext.min.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/registro.js"></script>
+ 
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&language=es"></script>
+
+
+
+
+</head>
+<body >
+  <div data-role="page" data-control-title="Login" id="page1">
+      <div data-theme="b" data-role="header">
+          <h3>
+              The Walker
+          </h3>
+      </div>
+      <div data-role="content">
+          <div style=" text-align:center" data-controltype="image">
+              <img style="width: 288px; height: 162px" src="http://image.pbs.org/webobjects/pbs/chasing-shackleton/908899/image_987.jpg.fit.288x162.jpg">
+          </div>
+          <div data-role="fieldcontain" data-controltype="textinput" style=" text-align:center">
+              <label for="usuario">
+              </label>
+              <input type="text" name="txtuser" id="txtuser" value="" placeholder="Nombre" />
+          </div>
+          <div data-role="fieldcontain" data-controltype="textinput" style=" text-align:center">
+              <label for="pass">
+              </label>
+              <input type="password" name="txtpassword" id="txtpassword" value="" placeholder="Contraseña" />
+          </div>
+            <div class="cont" data-role="content">	
+			</div>
+          <input id="btnLogin" type="submit" data-theme="b" value="Login">
+          <a data-role="button" data-transition="flip" data-theme="b" href="#page2"
+          data-icon="plus" data-iconpos="left">
+              Nuevo Usuario
+          </a>
+          <a data-role="button" data-transition="flip" href="#page3">
+              Button
+          </a>
+      </div>
+  </div>
+  <div data-role="page" data-control-title="Nuevo Usuario" id="page2">
+      <div data-theme="b" data-role="header">
+          <h3>
+              Nuevo Usuario
+          </h3>
+      </div>
+      <div data-role="content">
+          <div data-role="fieldcontain" data-controltype="textinput" style=" text-align:center" >
+              <label for="nombre">
+              </label>
+              <input type="text" name="nombre" id="nombre" value="" placeholder="Usuario*" />
+          </div>
+          <div data-role="fieldcontain" data-controltype="textinput" style=" text-align:center">
+              <label for="mail">
+              </label>
+             <input type="text" name="mail" id="mail" value="" placeholder="E-mail*" />
+          </div>
+          <div data-role="fieldcontain" data-controltype="textinput" style=" text-align:center">
+              <label for="pass1">
+              </label>
+              <input type="password" name="pass" id="pass" value="" placeholder="Contraseña*" />
+          </div>
+          <div data-role="fieldcontain" data-controltype="textinput" style=" text-align:center">
+              <label for="pass2">
+              </label>
+             <input type="password" name="passc" id="passc" value="" placeholder="Confirma Contraseña*" />
+          </div>
+          <div class="conte" data-role="content">	
+			</div>
+         <input type="button" value="Registrar" id="btnReg" data-theme="b">
+      </div>
+  </div>
+  
+  
+  <div data-role="page" data-control-title="Mapa" id="page3">
+      <div data-role="panel" id="panel1" data-position="left" data-display="overlay" data-theme="a">
+          <ul data-role="listview" data-divider-theme="g" data-inset="false">
+              <li data-role="list-divider" role="heading">
+              </li>
+              <li data-role="list-divider" role="heading">
+              </li>
+              <li data-role="list-divider" role="heading">
+                  The Walker - Hermanientas
+              </li>
+              <li data-theme="d">
+                  <a href="#page" data-transition="none">
+                      Mis Rutas
+                  </a>
+              </li>
+              <li data-role="list-divider" role="heading">
+              </li>
+              <li data-theme="d">
+                  <a href="Map.html" data-transition="none">
+                      Tiendas
+                  </a>
+              </li>
+              <li data-role="list-divider" role="heading">
+              </li>
+              <li data-theme="d">
+                  <a href="#pmap" data-transition="none">
+                      Sitios web
+                  </a>
+              </li>
+              <li data-role="list-divider" role="heading">
+              </li>
+              <li data-theme="d">
+                  <a href="page3.html" data-transition="none">
+                      Llamas de Emergecia
+                  </a>
+              </li>
+              <li data-role="list-divider" role="heading">
+              </li>
+              <li data-theme="d">
+                  <a href="page3.html" data-transition="none">
+                      Correr en segundo plano
+                  </a>
+              </li>
+          </ul>
+      </div>
+      <div data-theme="b" data-role="header">
+          <a data-controltype="panelbutton" data-role="button" data-inline="true" data-theme="b" href="#panel1" data-icon="bars" data-iconpos="left" class="ui-btn-left">
+              Opciones
+          </a>
+          <h3>
+              The Walker
+          </h3>
+      </div>
+     
+     <script src="js/Mapa.js"></script>
+    <div data-role="content" style="height:100%; width:100%; padding:0px">
+        
+          <div>
+                <div id="map-canvas" style="height:455px;"></div>
+          </div>
+
+     </div>
+     
+     <div data-role="footer" data-theme="b" data-position="fixed">		
+        <div data-role="navbar" data-theme="b">
+            <ul>
+                <li><a onClick="mostrarUbicacion()" data-theme="b">Geolocalizar</a></li>
+                <li><a onClick="getpuntos()" data-theme="b">Trazar Ruta</a></li>
+                <li><a noClick="borraGPS()" data-theme="b">Detener Ruta</a></li>
+            </ul>
+        </div><!-- /navbar -->
+      </div><!-- /footer -->
+
+  </div>
+  
+  
+  <script>
+$(document).ready(function(){
+	var output = $('#output');
+	var mail = [];
+	var nombre = [];
+	$.ajax({
+		url: 'http://thewalker.esy.es/conex.php/conex.php',
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 5000,
+	
+		success: function(data, status){
+			$.each(data, function(i,item){
+				
+				mail.push( item.factor_extremo);
+				nombre.push( item.ruta);
+			var landmark =	'<li data-theme="b" class="ui-btn ui-btn-icon-right ui-li ui-li-has-thumb ui-btn-down-c ui-btn-up-c"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a href="#page3" class="ui-link-inherit"><img src="img/rutav3.jpg" class="ui-li-thumb"><h3 class="ui-li-heading">'+item.ruta+'</h3><p class="ui-li-desc">'+item.factor_extremo+'</p></a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>';
+				$( ".content" ).append( mail[0] );
+				output.append(landmark);
+			});
+		},
+		error: function(){
+			output.text('Hubo un error al cargar los datos');
+		}
+	});
+	
+});
+</script>
+ 
+ <div data-role="page" id="page" data-control-title="Mis Rutas">
+	<div data-role="header" data-theme="b">
+		<h3>Mis Rutas</h3>
+	</div>
+	<div data-role="content">	
+		<ul id='output' data-role="listview" data-filter="true" data-theme="b">
+        
+		</ul>		
+	</div>
+</div>
+
+<div data-role="page" data-control-title="Mis Rutas" id="pmap">
+
+</div>
+
+</body>
+</html>

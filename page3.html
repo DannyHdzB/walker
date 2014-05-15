@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mapa | The Walker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link href="css/codiqa.ext.min.css" rel="stylesheet">
+  <link href="css/jqm-neue.css" rel="stylesheet">
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.mobile.min.js"></script>
+  <script src="js/codiqa.ext.min.js"></script>
+
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&sensor=false&language=es"></script>
+
+
+  <script src="js/the-walker.js"></script>
+</head>
+<body>
+  <div data-role="page" data-control-title="Mapa" id="page3">
+      <div data-role="panel" id="panel1" data-position="left" data-display="overlay" data-theme="a">
+          <ul data-role="listview" data-divider-theme="g" data-inset="false">
+              <li data-role="list-divider" role="heading">
+              </li>
+              <li data-role="list-divider" role="heading">
+              </li>
+              <li data-role="list-divider" role="heading">
+                  The Walker - Hermanientas
+              </li>
+              <li data-theme="d">
+                  <a href="page5.html" data-transition="none">
+                      Mis Rutas
+                  </a>
+              </li>
+              <li data-role="list-divider" role="heading">
+              </li>
+              <li data-theme="d">
+                  <a href="page3.html" data-transition="none">
+                      Tiendas
+                  </a>
+              </li>
+              <li data-role="list-divider" role="heading">
+              </li>
+              <li data-theme="d">
+                  <a href="page3.html" data-transition="none">
+                      Sitios web
+                  </a>
+              </li>
+              <li data-role="list-divider" role="heading">
+              </li>
+              <li data-theme="d">
+                  <a href="page3.html" data-transition="none">
+                      Llamas de Emergecia
+                  </a>
+              </li>
+              <li data-role="list-divider" role="heading">
+              </li>
+              <li data-theme="d">
+                  <a href="page3.html" data-transition="none">
+                      Correr en segundo plano
+                  </a>
+              </li>
+          </ul>
+      </div>
+      <div data-theme="b" data-role="header">
+          <a data-controltype="panelbutton" data-role="button" data-inline="true" data-theme="b" href="#panel1" data-icon="bars" data-iconpos="left" class="ui-btn-left">
+              Menu
+          </a>
+          <h3>
+              The Walker
+          </h3>
+      </div>
+
+      <div data-role="content">   
+                <div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
+                    <div id="map_canvas" style="height:350px;"></div>
+                </div>
+                
+                
+                </div>
+            </div>
+
+          <script type="text/javascript">
+
+            var map,
+                currentPosition,
+                directionsDisplay, 
+                directionsService;
+
+            function initialize(lat, lon)
+            {
+                directionsDisplay = new google.maps.DirectionsRenderer(); 
+                directionsService = new google.maps.DirectionsService();
+
+                currentPosition = new google.maps.LatLng(lat, lon);
+
+                map = new google.maps.Map(document.getElementById('map_canvas'), {
+                   zoom: 15,
+                   center: currentPosition,
+                   mapTypeId: google.maps.MapTypeId.ROADMAP
+                 });
+
+                directionsDisplay.setMap(map);
+
+                 var currentPositionMarker = new google.maps.Marker({
+                    position: currentPosition,
+                    map: map,
+                    title: "Current position"
+                });
+
+                var infowindow = new google.maps.InfoWindow();
+                google.maps.event.addListener(currentPositionMarker, 'click', function() {
+                    infowindow.setContent("Current position: latitude: " + lat +" longitude: " + lon);
+                    infowindow.open(map, currentPositionMarker);
+                });
+            }
+
+            function locError(error) {
+                // initialize map with a static predefined latitude, longitude
+               initialize(19.433248, -99.1329);
+            }
+
+            function locSuccess(position) {
+                initialize(position.coords.latitude, position.coords.longitude);
+            }
+
+            $(document).live("pagebeforeshow", "#map_page", function() {
+                navigator.geolocation.getCurrentPosition(locSuccess, locError);
+            });
+
+            $(document).on('click', '#directions-button', function(e){
+                e.preventDefault();
+                calculateRoute();
+            });
+
+        </script>
+      </div>
+  </div>
+</body>
+</html>
